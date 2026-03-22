@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		/* Surface / Background — warm cream palette */
+		--background: 40 33% 97%; /* #FAF9F7 - surface */
+		--foreground: 160 7% 10%; /* #1A1C1B - on-surface */
+
+		--card: 0 0% 100%; /* #FFFFFF - surface-container-lowest */
+		--card-foreground: 160 7% 10%; /* #1A1C1B */
+
+		--popover: 0 0% 100%;
+		--popover-foreground: 160 7% 10%;
+
+		/* Primary — near-black */
+		--primary: 0 0% 10%; /* #1A1A1A */
+		--primary-foreground: 0 0% 100%; /* #FFFFFF - on-primary */
+
+		/* Secondary — warm brown */
+		--secondary: 24 16% 36%; /* #6A5C4E */
+		--secondary-foreground: 0 0% 100%; /* #FFFFFF - on-secondary */
+
+		/* Secondary container — warm beige */
+		--secondary-container: 24 42% 84%; /* #E8D5C4 */
+		--secondary-container-foreground: 20 15% 38%; /* #706254 */
+
+		/* Muted / surface-variant */
+		--muted: 40 7% 95%; /* #F4F3F1 - surface-container-low */
+		--muted-foreground: 195 3% 28%; /* #444748 - on-surface-variant */
+
+		/* Accent — surface-container-high */
+		--accent: 40 7% 91%; /* #E9E8E6 */
+		--accent-foreground: 160 7% 10%;
+
+		--destructive: 0 80% 41%; /* #BA1A1A */
+		--destructive-foreground: 0 0% 100%;
+
+		/* Borders — ghost borders per design system */
+		--border: 192 3% 77%; /* #C4C7C7 - outline-variant */
+		--input: 180 2% 46%; /* #747878 - outline */
+		--ring: 0 0% 10%;
+
+		/* Surface layers for tonal depth */
+		--surface-dim: 40 3% 85%; /* #DADAD8 */
+		--surface-container: 40 5% 93%; /* #EFEEEC */
+		--surface-container-high: 40 5% 91%; /* #E9E8E6 */
+		--surface-container-lowest: 0 0% 100%; /* #FFFFFF */
+
+		/* Tertiary / gold accent */
+		--tertiary: 38 25% 69%; /* #C9B99A - muted gold */
+
+		--radius: 0.5rem;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border/15;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+body {
+	::selection {
+		@apply bg-secondary-container text-secondary-container-foreground;
+	}
+}
+
+/* Utility classes from design system */
+.warm-grade {
+	filter: sepia(0.15) brightness(1.05) saturate(0.88);
+}
+
+.glass {
+	backdrop-filter: blur(20px);
+	background: hsl(var(--background) / 0.8);
+}
