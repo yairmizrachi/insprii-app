@@ -60,8 +60,8 @@ function FeatureSave() {
 				<Label className="mb-4 block text-secondary">01 - Save</Label>
 				<H3 className="mb-6">Share anything, from anywhere.</H3>
 				<P className="!mt-0 text-muted-foreground">
-					Send images straight from Instagram, Pinterest, or your camera roll. Any look you love, saved in seconds in one place. No more screenshots
-					buried in your camera roll.
+					Send images straight from Instagram, Pinterest, or your camera roll. Any look you love, saved in seconds. No more screenshots buried in
+					your camera roll.
 				</P>
 			</motion.div>
 		</div>
@@ -75,7 +75,7 @@ function FeatureDiscover() {
 				<Label className="mb-4 block text-secondary">02 - Discover</Label>
 				<H3 className="mb-6">Find out what your style actually is.</H3>
 				<P className="!mt-0 text-muted-foreground">
-					We analyze everything you save: colors, items, and silhouettes, and show you the recurring patterns in your mood board
+					We analyze everything you save: colors, items, and silhouettes. We then surface the recurring patterns in your mood board.
 				</P>
 			</motion.div>
 

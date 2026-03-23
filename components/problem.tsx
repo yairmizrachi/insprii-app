@@ -22,11 +22,11 @@ export default function Problem() {
 				<div>
 					<Label className="mb-4 block text-secondary-container">Sound familiar?</Label>
 
-					<H2 className="mb-8 text-primary-foreground">You save hundreds of outfits, But still have nothing to wear.</H2>
+					<H2 className="mb-8 text-primary-foreground">You save hundreds of outfits. You still have nothing to wear.</H2>
 
 					<motion.p variants={itemVariants} className="mb-12 text-lg leading-relaxed text-[#8A8A8A]">
-						You spend hours on Pinterest. You screenshot looks on Instagram. But when it's time to actually shop you're overwelmed with options,
-						buying things that dont fit you astectic and get worn once
+						You spend hours on Pinterest. You screenshot looks on Instagram. But when it&apos;s time to actually shop, you&apos;re overwhelmed
+						with options. You end up buying things that don&apos;t fit your aesthetic and only get worn once.
 					</motion.p>
 
 					<ul className="space-y-6">
