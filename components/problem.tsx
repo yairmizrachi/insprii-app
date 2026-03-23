@@ -25,8 +25,8 @@ export default function Problem() {
 					<H2 className="mb-8 text-primary-foreground">You save hundreds of outfits. You still have nothing to wear.</H2>
 
 					<motion.p variants={itemVariants} className="mb-12 text-lg leading-relaxed text-[#8A8A8A]">
-						You spend hours on Pinterest. You screenshot looks on Instagram. But when it&apos;s time to actually shop, you&apos;re overwhelmed
-						with options. You end up buying things that don&apos;t fit your aesthetic and only get worn once.
+						You spend hours on Pinterest. You screenshot looks on Instagram. But when it&apos;s time to actually shop, you&apos;re overwhelmed with
+						options. You end up buying things that don&apos;t fit your aesthetic and only get worn once.
 					</motion.p>
 
 					<ul className="space-y-6">

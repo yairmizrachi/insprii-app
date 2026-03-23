@@ -16,8 +16,7 @@ export default function Hero() {
 				<H1 className="mx-auto mb-8 max-w-3xl">Stop buying clothes you never wear.</H1>
 
 				<Lead className="mx-auto mb-10 max-w-xl">
-					Save your inspo from Instagram, Pinterest, or your camera roll. Discover exactly what your style is trying to tell you. No more
-					guessing.
+					Save your inspo from Instagram, Pinterest, or your camera roll. Discover exactly what your style is trying to tell you. No more guessing.
 				</Lead>
 
 				<motion.div variants={itemVariants} className="mb-20 flex flex-col items-center gap-4">

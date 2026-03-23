@@ -60,8 +60,8 @@ function FeatureSave() {
 				<Label className="mb-4 block text-secondary">01 - Save</Label>
 				<H3 className="mb-6">Share anything, from anywhere.</H3>
 				<P className="!mt-0 text-muted-foreground">
-					Send images straight from Instagram, Pinterest, or your camera roll. Any look you love, saved in seconds. No more screenshots buried in
-					your camera roll.
+					Send images straight from Instagram, Pinterest, or your camera roll. Any look you love, saved in seconds. No more screenshots buried in your
+					camera roll.
 				</P>
 			</motion.div>
 		</div>
