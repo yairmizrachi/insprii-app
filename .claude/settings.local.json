@@ -1,0 +1,13 @@
+{
+	"permissions": {
+		"allow": [
+			"Bash(curl:*)",
+			"Bash(node:*)",
+			"WebFetch(domain:localhost)",
+			"Bash(grep -oP '.{0,100}facebook\\\\.com/tr.{0,100}')",
+			"Bash(grep -oP '.{0,100}/api/fb/tr.{0,100}')",
+			"Bash(grep -oP '.{0,50}GPS_ENDPOINT.{0,100}')",
+			"*"
+		]
+	}
+}

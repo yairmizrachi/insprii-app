@@ -4,6 +4,7 @@ import { Inter, Noto_Serif } from 'next/font/google';
 import Navbar from '@/components/navbar';
 import { Toaster } from '@/components/ui/sonner';
 import { Analytics } from '@vercel/analytics/react';
+import FacebookPixel from '@/components/FacebookPixel';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const notoSerif = Noto_Serif({ subsets: ['latin'], variable: '--font-serif' });
@@ -50,6 +51,7 @@ export default function RootLayout({
 				{children}
 				<Toaster richColors position="top-center" />
 				<Analytics />
+				<FacebookPixel />
 			</body>
 		</html>
 	);
