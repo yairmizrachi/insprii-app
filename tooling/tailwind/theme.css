@@ -1,46 +1,52 @@
 :root {
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.145 0 0);
-	--card: oklch(1 0 0);
-	--card-foreground: oklch(0.145 0 0);
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.145 0 0);
-	--primary: oklch(0.205 0 0);
-	--primary-foreground: oklch(0.985 0 0);
-	--secondary: oklch(0.97 0 0);
-	--secondary-foreground: oklch(0.205 0 0);
-	--muted: oklch(0.97 0 0);
-	--muted-foreground: oklch(0.556 0 0);
-	--accent: oklch(0.97 0 0);
-	--accent-foreground: oklch(0.205 0 0);
-	--destructive: oklch(0.577 0.245 27.325);
-	--destructive-foreground: oklch(0.985 0 0);
-	--border: oklch(0.922 0 0);
-	--input: oklch(0.922 0 0);
-	--ring: oklch(0.708 0 0);
-	--radius: 0.5rem;
+	/* Surface / Background — warm cream palette */
+	--background: hsl(40 33% 97%);
+	--foreground: hsl(160 7% 10%);
 
-	@variant dark {
-		--background: oklch(0.145 0 0);
-		--foreground: oklch(0.985 0 0);
-		--card: oklch(0.205 0 0);
-		--card-foreground: oklch(0.985 0 0);
-		--popover: oklch(0.205 0 0);
-		--popover-foreground: oklch(0.985 0 0);
-		--primary: oklch(0.922 0 0);
-		--primary-foreground: oklch(0.205 0 0);
-		--secondary: oklch(0.269 0 0);
-		--secondary-foreground: oklch(0.985 0 0);
-		--muted: oklch(0.269 0 0);
-		--muted-foreground: oklch(0.708 0 0);
-		--accent: oklch(0.269 0 0);
-		--accent-foreground: oklch(0.985 0 0);
-		--destructive: oklch(0.704 0.191 22.216);
-		--destructive-foreground: oklch(0.985 0 0);
-		--border: oklch(1 0 0 / 10%);
-		--input: oklch(1 0 0 / 15%);
-		--ring: oklch(0.556 0 0);
-	}
+	--card: hsl(0 0% 100%);
+	--card-foreground: hsl(160 7% 10%);
+
+	--popover: hsl(0 0% 100%);
+	--popover-foreground: hsl(160 7% 10%);
+
+	/* Primary — near-black */
+	--primary: hsl(0 0% 10%);
+	--primary-foreground: hsl(0 0% 100%);
+
+	/* Secondary — warm brown */
+	--secondary: hsl(24 16% 36%);
+	--secondary-foreground: hsl(0 0% 100%);
+
+	/* Secondary container — warm beige */
+	--secondary-container: hsl(24 42% 84%);
+	--secondary-container-foreground: hsl(20 15% 38%);
+
+	/* Muted / surface-variant */
+	--muted: hsl(40 7% 95%);
+	--muted-foreground: hsl(195 3% 28%);
+
+	/* Accent — surface-container-high */
+	--accent: hsl(40 7% 91%);
+	--accent-foreground: hsl(160 7% 10%);
+
+	--destructive: hsl(0 80% 41%);
+	--destructive-foreground: hsl(0 0% 100%);
+
+	/* Borders */
+	--border: hsl(192 3% 77%);
+	--input: hsl(180 2% 46%);
+	--ring: hsl(0 0% 10%);
+
+	/* Surface layers for tonal depth */
+	--surface-dim: hsl(40 3% 85%);
+	--surface-container: hsl(40 5% 93%);
+	--surface-container-high: hsl(40 5% 91%);
+	--surface-container-lowest: hsl(0 0% 100%);
+
+	/* Tertiary / gold accent */
+	--tertiary: hsl(38 25% 69%);
+
+	--radius: 0.5rem;
 }
 
 @theme inline {
@@ -54,6 +60,8 @@
 	--color-primary-foreground: var(--primary-foreground);
 	--color-secondary: var(--secondary);
 	--color-secondary-foreground: var(--secondary-foreground);
+	--color-secondary-container: var(--secondary-container);
+	--color-secondary-container-foreground: var(--secondary-container-foreground);
 	--color-muted: var(--muted);
 	--color-muted-foreground: var(--muted-foreground);
 	--color-accent: var(--accent);
@@ -63,9 +71,47 @@
 	--color-border: var(--border);
 	--color-input: var(--input);
 	--color-ring: var(--ring);
+	--color-surface-dim: var(--surface-dim);
+	--color-surface-container: var(--surface-container);
+	--color-surface-container-high: var(--surface-container-high);
+	--color-surface-container-lowest: var(--surface-container-lowest);
+	--color-tertiary: var(--tertiary);
+
+	--font-sans: var(--font-sans);
+	--font-headline: var(--font-serif);
+	--font-body: var(--font-sans);
+	--font-label: var(--font-sans);
 
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 4px);
+	--radius-card: 1rem;
+
+	--shadow-ui-card: 0 4px 24px rgba(0, 0, 0, 0.08);
+	--shadow-ambient: 0 20px 60px rgba(26, 28, 27, 0.04);
+
+	--animate-shimmer: shimmer 8s infinite;
+
+	@keyframes shimmer {
+		0%,
+		90%,
+		100% {
+			background-position: calc(-100% - var(--shimmer-width)) 0;
+		}
+		30%,
+		60% {
+			background-position: calc(100% + var(--shimmer-width)) 0;
+		}
+	}
+}
+
+/* Utility classes from the insprii design system */
+.warm-grade {
+	filter: sepia(0.15) brightness(1.05) saturate(0.88);
+}
+
+.glass {
+	backdrop-filter: blur(20px);
+	background: color-mix(in oklab, var(--background) 80%, transparent);
 }

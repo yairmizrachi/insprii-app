@@ -34,7 +34,7 @@ export default function Index() {
 		<SafeAreaView className="bg-background">
 			<Stack.Screen options={{ title: 'Home' }} />
 			<View className="bg-background h-full w-full p-4">
-				<Text className="text-foreground pb-2 text-center text-5xl font-bold">Your App</Text>
+				<Text className="text-foreground pb-2 text-center text-5xl font-bold">Insprii</Text>
 				<MobileAuth />
 			</View>
 		</SafeAreaView>

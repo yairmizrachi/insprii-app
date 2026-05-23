@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter, Noto_Serif } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 
 import { cn } from '@repo/ui'
 import { ThemeProvider } from '@repo/ui/theme'
@@ -10,9 +11,12 @@ import { TRPCReactProvider } from '~/trpc/react'
 
 import '~/app/styles.css'
 
-const siteName = env.NEXT_PUBLIC_SITE_NAME ?? 'Your App'
-const siteDescription = env.NEXT_PUBLIC_SITE_DESCRIPTION ?? 'Build something great.'
-const siteUrl = env.NEXT_PUBLIC_SITE_URL ?? (env.VERCEL_ENV === 'production' ? 'https://example.com' : 'http://localhost:3000')
+import FacebookPixel from './_components/facebook-pixel'
+import Navbar from './_components/navbar'
+
+const siteName = env.NEXT_PUBLIC_SITE_NAME ?? 'Insprii'
+const siteDescription = env.NEXT_PUBLIC_SITE_DESCRIPTION ?? 'Stop buying clothes you never wear.'
+const siteUrl = env.NEXT_PUBLIC_SITE_URL ?? (env.VERCEL_ENV === 'production' ? 'https://insprii.app' : 'http://localhost:3000')
 
 export const metadata: Metadata = {
 	metadataBase: new URL(siteUrl),
@@ -23,36 +27,42 @@ export const metadata: Metadata = {
 		description: siteDescription,
 		url: siteUrl,
 		siteName,
+		images: [{ url: '/opengraph-image.png', width: 1280, height: 832, type: 'image/png' }],
 	},
 	twitter: {
 		card: 'summary_large_image',
+		title: siteName,
+		description: siteDescription,
+		images: ['/twitter-image.png'],
 	},
 }
 
 export const viewport: Viewport = {
-	themeColor: [
-		{ media: '(prefers-color-scheme: light)', color: 'white' },
-		{ media: '(prefers-color-scheme: dark)', color: 'black' },
-	],
+	themeColor: [{ media: '(prefers-color-scheme: light)', color: 'white' }],
 }
 
-const geistSans = Geist({
-	subsets: ['latin'],
-	variable: '--font-geist-sans',
-})
-const geistMono = Geist_Mono({
-	subsets: ['latin'],
-	variable: '--font-geist-mono',
-})
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
+const notoSerif = Noto_Serif({ subsets: ['latin'], variable: '--font-serif' })
 
 export default function RootLayout(props: { children: React.ReactNode }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
-			<body className={cn('bg-background text-foreground min-h-screen font-sans antialiased', geistSans.variable, geistMono.variable)}>
+		<html lang="en" className="scroll-smooth" suppressHydrationWarning>
+			<body
+				className={cn(
+					'bg-background text-foreground font-body selection:bg-secondary-container selection:text-secondary-container-foreground min-h-screen antialiased',
+					inter.variable,
+					notoSerif.variable,
+				)}
+			>
 				<ThemeProvider>
-					<TRPCReactProvider>{props.children}</TRPCReactProvider>
+					<TRPCReactProvider>
+						<Navbar />
+						{props.children}
+					</TRPCReactProvider>
 					<Toaster richColors position="top-center" />
 				</ThemeProvider>
+				<Analytics />
+				<FacebookPixel />
 			</body>
 		</html>
 	)

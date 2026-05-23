@@ -25,6 +25,7 @@ export const env = createEnv({
 		NEXT_PUBLIC_SITE_NAME: z.string().optional(),
 		NEXT_PUBLIC_SITE_URL: z.url().optional(),
 		NEXT_PUBLIC_SITE_DESCRIPTION: z.string().optional(),
+		NEXT_PUBLIC_FACEBOOK_PIXEL_ID: z.string().optional(),
 	},
 	/**
 	 * Destructure all variables from `process.env` to make sure they aren't tree-shaken away.
@@ -34,6 +35,7 @@ export const env = createEnv({
 		NEXT_PUBLIC_SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME,
 		NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
 		NEXT_PUBLIC_SITE_DESCRIPTION: process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
+		NEXT_PUBLIC_FACEBOOK_PIXEL_ID: process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID,
 	},
 	skipValidation: !!process.env.CI || process.env.npm_lifecycle_event === 'lint',
 })

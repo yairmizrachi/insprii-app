@@ -36,7 +36,7 @@ export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options:
 				// redirectURI: `${options.productionUrl}/api/auth/callback/google`,
 			},
 		},
-		trustedOrigins: ['yourapp://'],
+		trustedOrigins: ['insprii://'],
 		onAPIError: {
 			onError(error, ctx) {
 				console.error('BETTER AUTH API ERROR', error, ctx)

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Rounded square background -->
+  <rect x="0" y="0" width="512" height="512" rx="64" ry="64" fill="#3C3226"/>
+  <!-- Brand name -->
+  <text 
+    x="256" 
+    y="280" 
+    font-family="'Playfair Display', 'Georgia', serif" 
+    font-weight="500" 
+    font-size="108" 
+    fill="#F5F0EB" 
+    text-anchor="middle" 
+    letter-spacing="2"
+  >Insprii</text>
+</svg>
