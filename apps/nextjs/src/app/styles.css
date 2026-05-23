@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import '@acme/tailwind-config/theme';
+@import '@repo/tailwind-config/theme';
 
 @source '../../../../packages/ui/src/*.{ts,tsx}';
 
@@ -22,8 +22,5 @@
 @layer base {
 	* {
 		@apply border-border;
-	}
-	body {
-		letter-spacing: var(--tracking-normal);
 	}
 }

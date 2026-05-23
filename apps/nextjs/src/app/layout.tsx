@@ -1,29 +1,31 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 
-import { cn } from '@acme/ui'
-import { ThemeProvider, ThemeToggle } from '@acme/ui/theme'
-import { Toaster } from '@acme/ui/toast'
+import { cn } from '@repo/ui'
+import { ThemeProvider } from '@repo/ui/theme'
+import { Toaster } from '@repo/ui/toast'
 
 import { env } from '~/env'
 import { TRPCReactProvider } from '~/trpc/react'
 
 import '~/app/styles.css'
 
+const siteName = env.NEXT_PUBLIC_SITE_NAME ?? 'Your App'
+const siteDescription = env.NEXT_PUBLIC_SITE_DESCRIPTION ?? 'Build something great.'
+const siteUrl = env.NEXT_PUBLIC_SITE_URL ?? (env.VERCEL_ENV === 'production' ? 'https://example.com' : 'http://localhost:3000')
+
 export const metadata: Metadata = {
-	metadataBase: new URL(env.VERCEL_ENV === 'production' ? 'https://turbo.t3.gg' : 'http://localhost:3000'),
-	title: 'Create T3 Turbo',
-	description: 'Simple monorepo with shared backend for web & mobile apps',
+	metadataBase: new URL(siteUrl),
+	title: siteName,
+	description: siteDescription,
 	openGraph: {
-		title: 'Create T3 Turbo',
-		description: 'Simple monorepo with shared backend for web & mobile apps',
-		url: 'https://create-t3-turbo.vercel.app',
-		siteName: 'Create T3 Turbo',
+		title: siteName,
+		description: siteDescription,
+		url: siteUrl,
+		siteName,
 	},
 	twitter: {
 		card: 'summary_large_image',
-		site: '@jullerino',
-		creator: '@jullerino',
 	},
 }
 
@@ -49,10 +51,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
 			<body className={cn('bg-background text-foreground min-h-screen font-sans antialiased', geistSans.variable, geistMono.variable)}>
 				<ThemeProvider>
 					<TRPCReactProvider>{props.children}</TRPCReactProvider>
-					<div className="absolute right-4 bottom-4">
-						<ThemeToggle />
-					</div>
-					<Toaster />
+					<Toaster richColors position="top-center" />
 				</ThemeProvider>
 			</body>
 		</html>

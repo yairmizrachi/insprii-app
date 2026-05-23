@@ -2,9 +2,9 @@ import type { ConfigContext, ExpoConfig } from 'expo/config'
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
 	...config,
-	name: 'expo',
-	slug: 'insprii',
-	scheme: 'expo',
+	name: 'Your App',
+	slug: 'your-app',
+	scheme: 'yourapp',
 	version: '0.1.0',
 	orientation: 'portrait',
 	icon: './assets/icon-light.png',
@@ -15,12 +15,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 	newArchEnabled: true,
 	assetBundlePatterns: ['**/*'],
 	ios: {
-		bundleIdentifier: 'com.expo', // Note: Should follow the convenstion of com.yourcompany/yourname.yourappname
+		bundleIdentifier: 'your.bundle.identifier', // e.g. com.yourcompany.yourappname
 		supportsTablet: true,
 		icon: './assets/images/app-icon-ios.png',
 	},
 	android: {
-		package: 'com.expo',
+		package: 'your.bundle.identifier',
 		icon: './assets/images/app-icon-android-legacy.png',
 		adaptiveIcon: {
 			foregroundImage: './assets/images/app-icon-android-adaptive-foreground.png',
@@ -31,7 +31,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 	},
 	extra: {
 		eas: {
-			projectId: '2077f102-5567-45d2-8bae-acca2ae52a60',
+			projectId: process.env.EAS_PROJECT_ID,
 		},
 	},
 	experiments: {
@@ -57,7 +57,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 			// @see https://react-native-google-signin.github.io/docs/setting-up/expo
 			'@react-native-google-signin/google-signin',
 			{
-				iosUrlScheme: 'com.googleusercontent.apps.499811428950-ah6rk49c2k0e2av4dfsse22gl9gkbnqo',
+				// Reversed iOS Google client ID from GoogleService-Info.plist
+				iosUrlScheme: 'com.googleusercontent.apps.YOUR_REVERSED_CLIENT_ID',
 			},
 		],
 	],

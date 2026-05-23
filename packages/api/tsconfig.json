@@ -1,5 +1,8 @@
 {
-	"extends": "@acme/tsconfig/compiled-package.json",
+	"extends": "@repo/tsconfig/compiled-package.json",
+	"compilerOptions": {
+		"jsx": "react-jsx"
+	},
 	"include": ["src"],
 	"exclude": ["node_modules"]
 }

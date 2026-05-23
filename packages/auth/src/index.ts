@@ -4,7 +4,7 @@ import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { oAuthProxy } from 'better-auth/plugins'
 
-import { db } from '@acme/db/client'
+import { db } from '@repo/db/client'
 
 export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options: {
 	baseUrl: string
@@ -36,7 +36,7 @@ export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options:
 				// redirectURI: `${options.productionUrl}/api/auth/callback/google`,
 			},
 		},
-		trustedOrigins: ['myapp://'],
+		trustedOrigins: ['yourapp://'],
 		onAPIError: {
 			onError(error, ctx) {
 				console.error('BETTER AUTH API ERROR', error, ctx)

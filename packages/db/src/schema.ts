@@ -1,23 +1,15 @@
-import { sql } from 'drizzle-orm'
 import { pgTable } from 'drizzle-orm/pg-core'
 import { createInsertSchema } from 'drizzle-zod'
 import { z } from 'zod/v4'
 
-export const Post = pgTable('post', (t) => ({
+export const Waitlist = pgTable('waitlist', (t) => ({
 	id: t.uuid().notNull().primaryKey().defaultRandom(),
-	title: t.varchar({ length: 256 }).notNull(),
-	content: t.text().notNull(),
-	createdAt: t.timestamp().defaultNow().notNull(),
-	updatedAt: t.timestamp({ mode: 'date', withTimezone: true }).$onUpdateFn(() => sql`now()`),
+	email: t.varchar({ length: 320 }).notNull().unique(),
+	createdAt: t.timestamp({ mode: 'date', withTimezone: true }).defaultNow().notNull(),
 }))
 
-export const CreatePostSchema = createInsertSchema(Post, {
-	title: z.string().max(256),
-	content: z.string().max(256),
-}).omit({
-	id: true,
-	createdAt: true,
-	updatedAt: true,
-})
+export const JoinWaitlistSchema = createInsertSchema(Waitlist, {
+	email: z.email().max(320),
+}).pick({ email: true })
 
 export * from './auth-schema'

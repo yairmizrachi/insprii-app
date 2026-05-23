@@ -17,7 +17,8 @@ export const getBaseUrl = () => {
 	const localhost = debuggerHost?.split(':')[0]
 
 	if (!localhost) {
-		// return "https://turbo.t3.gg";
+		// In production, return your deployed server URL instead of throwing, e.g.
+		// return "https://example.com";
 		throw new Error('Failed to get localhost. Please point to your production server.')
 	}
 	return `http://${localhost}:3000`
