@@ -2,9 +2,9 @@ import type { ConfigContext, ExpoConfig } from 'expo/config'
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
 	...config,
-	name: 'Your App',
-	slug: 'your-app',
-	scheme: 'yourapp',
+	name: 'expo',
+	slug: 'insprii',
+	scheme: 'expo',
 	version: '0.1.0',
 	orientation: 'portrait',
 	icon: './assets/icon-light.png',
@@ -15,12 +15,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 	newArchEnabled: true,
 	assetBundlePatterns: ['**/*'],
 	ios: {
-		bundleIdentifier: 'your.bundle.identifier', // e.g. com.yourcompany.yourappname
+		bundleIdentifier: 'com.expo', // e.g. com.yourcompany.yourappname
 		supportsTablet: true,
 		icon: './assets/images/app-icon-ios.png',
 	},
 	android: {
-		package: 'your.bundle.identifier',
+		package: 'com.expo',
 		icon: './assets/images/app-icon-android-legacy.png',
 		adaptiveIcon: {
 			foregroundImage: './assets/images/app-icon-android-adaptive-foreground.png',
