@@ -53,5 +53,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 				backgroundColor: '#191015',
 			},
 		],
+		[
+			// @see https://react-native-google-signin.github.io/docs/setting-up/expo
+			'@react-native-google-signin/google-signin',
+			{
+				iosUrlScheme: 'com.googleusercontent.apps.499811428950-ah6rk49c2k0e2av4dfsse22gl9gkbnqo',
+			},
+		],
 	],
 })
