@@ -4,14 +4,18 @@
 	"type": "module",
 	"exports": {
 		".": "./src/index.ts",
+		"./animation-variants": "./src/animation-variants.ts",
 		"./button": "./src/button.tsx",
 		"./dropdown-menu": "./src/dropdown-menu.tsx",
+		"./enhanced-button": "./src/enhanced-button.tsx",
 		"./field": "./src/field.tsx",
 		"./input": "./src/input.tsx",
 		"./label": "./src/label.tsx",
 		"./separator": "./src/separator.tsx",
+		"./shimmer-text": "./src/shimmer-text.tsx",
 		"./theme": "./src/theme.tsx",
-		"./toast": "./src/toast.tsx"
+		"./toast": "./src/toast.tsx",
+		"./typography": "./src/typography.tsx"
 	},
 	"license": "MIT",
 	"scripts": {
@@ -24,6 +28,7 @@
 	"dependencies": {
 		"@radix-ui/react-icons": "^1.3.2",
 		"class-variance-authority": "^0.7.1",
+		"framer-motion": "^11.18.2",
 		"radix-ui": "^1.4.3",
 		"sonner": "^2.0.7",
 		"tailwind-merge": "^3.3.1"
