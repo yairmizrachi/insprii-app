@@ -14,6 +14,9 @@ const baseUrl =
 			? `https://${env.VERCEL_URL}`
 			: 'http://localhost:3000'
 
+console.log('Auth base URL:', baseUrl)
+console.log('Auth production URL:', `https://${env.VERCEL_PROJECT_PRODUCTION_URL ?? ''}`)
+
 export const auth = initAuth({
 	baseUrl,
 	productionUrl: `https://${env.VERCEL_PROJECT_PRODUCTION_URL ?? 'insprii.app'}`,
@@ -21,7 +24,6 @@ export const auth = initAuth({
 	googleClientId: env.GOOGLE_CLIENT_ID,
 	googleClientSecret: env.GOOGLE_CLIENT_SECRET,
 	extraPlugins: [nextCookies()],
-	extraTrustedOrigins: env.VERCEL_ENV ? [] : ['http://localhost:3000'],
 })
 
 export const getSession = cache(async () => auth.api.getSession({ headers: await headers() }))
