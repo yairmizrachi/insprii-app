@@ -2,9 +2,8 @@ import 'server-only'
 
 import { cache } from 'react'
 import { headers } from 'next/headers'
-import { nextCookies } from 'better-auth/next-js'
-
 import { initAuth } from '@repo/auth'
+import { nextCookies } from 'better-auth/next-js'
 
 import { env } from '~/env'
 
@@ -14,6 +13,9 @@ const baseUrl =
 		: env.VERCEL_ENV === 'preview'
 			? `https://${env.VERCEL_URL}`
 			: 'http://localhost:3000'
+
+console.log('Auth base URL:', baseUrl)
+console.log('Auth production URL:', `https://${env.VERCEL_PROJECT_PRODUCTION_URL ?? ''}`)
 
 export const auth = initAuth({
 	baseUrl,
