@@ -21,6 +21,7 @@ export const auth = initAuth({
 	googleClientId: env.GOOGLE_CLIENT_ID,
 	googleClientSecret: env.GOOGLE_CLIENT_SECRET,
 	extraPlugins: [nextCookies()],
+	extraTrustedOrigins: env.VERCEL_ENV ? [] : ['http://localhost:3000'],
 })
 
 export const getSession = cache(async () => auth.api.getSession({ headers: await headers() }))
