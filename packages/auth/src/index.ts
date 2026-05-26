@@ -1,9 +1,10 @@
 import type { BetterAuthOptions, BetterAuthPlugin } from 'better-auth'
 import { expo } from '@better-auth/expo'
-import { db } from '@repo/db/client'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { oAuthProxy } from 'better-auth/plugins'
+
+import { db } from '@repo/db/client'
 
 export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options: {
 	baseUrl: string
@@ -39,6 +40,16 @@ export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options:
 		onAPIError: {
 			onError(error, ctx) {
 				console.error('BETTER AUTH API ERROR', error, ctx)
+			},
+		},
+		advanced: {
+			cookies: {
+				state: {
+					attributes: {
+						sameSite: 'none',
+						secure: true,
+					},
+				},
 			},
 		},
 	} satisfies BetterAuthOptions
