@@ -11,7 +11,7 @@ const baseUrl =
 	env.VERCEL_ENV === 'production'
 		? `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 		: env.VERCEL_ENV === 'preview'
-			? `https://insprii-app-nextjs-git-boilerplate-aiotexs-projects.vercel.app`
+			? `https://${env.VERCEL_URL}`
 			: 'http://localhost:3000'
 
 console.log('Auth base URL:', baseUrl)
