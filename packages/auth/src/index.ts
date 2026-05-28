@@ -20,8 +20,8 @@ export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options:
 		database: drizzleAdapter(db, {
 			provider: 'pg',
 		}),
-		// baseURL: options.baseUrl,
-		// secret: options.secret,
+		baseURL: options.baseUrl,
+		secret: options.secret,
 		plugins: [
 			oAuthProxy({
 				productionURL: options.productionUrl,
@@ -33,7 +33,7 @@ export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options:
 			google: {
 				clientId: options.googleClientId,
 				clientSecret: options.googleClientSecret,
-				// redirectURI: `${options.productionUrl}/api/auth/callback/google`,
+				redirectURI: `${options.productionUrl}/api/auth/callback/google`,
 			},
 		},
 		trustedOrigins: ['myapp://', 'http://localhost:3000', 'https://insprii-app-nextjs-*-aiotexs-projects.vercel.app'], // TODO: check if we ned all values here

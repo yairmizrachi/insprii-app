@@ -17,13 +17,10 @@ const baseUrl =
 console.log('Auth base URL:', baseUrl)
 console.log('Auth production URL:', `https://${env.VERCEL_PROJECT_PRODUCTION_URL ?? 'insprii.app'}`)
 
-//const productionUrl = `https://${env.VERCEL_PROJECT_PRODUCTION_URL ?? 'insprii.app'}`
-const productionUrl = 'https://insprii-app-nextjs-git-boilerplate-aiotexs-projects.vercel.app'
-
 export const auth = initAuth({
 	baseUrl,
-	productionUrl: productionUrl,
-	secret: env.AUTH_SECRET,
+	productionUrl: `https://${env.VERCEL_PROJECT_PRODUCTION_URL ?? 'insprii.app'}`,
+	secret: env.BETTER_AUTH_SECRET,
 	googleClientId: env.GOOGLE_CLIENT_ID,
 	googleClientSecret: env.GOOGLE_CLIENT_SECRET,
 	extraPlugins: [nextCookies()],
