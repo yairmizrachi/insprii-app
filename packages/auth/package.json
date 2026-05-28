@@ -24,7 +24,6 @@
 		"zod": "catalog:"
 	},
 	"devDependencies": {
-		"@better-auth/cli": "catalog:",
 		"@repo/eslint-config": "workspace:*",
 		"@repo/prettier-config": "workspace:*",
 		"@repo/tsconfig": "workspace:*",

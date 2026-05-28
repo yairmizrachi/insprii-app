@@ -24,6 +24,7 @@ export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options:
 		secret: options.secret,
 		plugins: [
 			oAuthProxy({
+				currentURL: options.baseUrl,
 				productionURL: options.productionUrl,
 			}),
 			expo(),
