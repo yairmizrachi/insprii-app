@@ -23,7 +23,7 @@ const productionUrl = 'https://insprii-app-nextjs-git-boilerplate-aiotexs-projec
 export const auth = initAuth({
 	baseUrl,
 	productionUrl: productionUrl,
-	secret: env.BETTER_AUTH_SECRET,
+	secret: env.AUTH_SECRET,
 	googleClientId: env.GOOGLE_CLIENT_ID,
 	googleClientSecret: env.GOOGLE_CLIENT_SECRET,
 	extraPlugins: [nextCookies()],
