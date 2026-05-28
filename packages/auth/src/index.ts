@@ -1,11 +1,10 @@
 import type { BetterAuthOptions, BetterAuthPlugin } from 'better-auth'
 import { expo } from '@better-auth/expo'
+import { db } from '@repo/db/client'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { createAuthMiddleware } from 'better-auth/api'
 import { oAuthProxy } from 'better-auth/plugins'
-
-import { db } from '@repo/db/client'
 
 // Works around better-auth #5073: on the production proxy instance, oAuthProxy fails to set
 // skipStateCookieCheck for proxied callbacks (because productionURL === baseURL there), so the
