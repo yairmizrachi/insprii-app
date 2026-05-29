@@ -37,7 +37,7 @@ export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options:
 				redirectURI: `${options.productionUrl}/api/auth/callback/google`,
 			},
 		},
-		trustedOrigins: ['myapp://', 'http://localhost:3000', 'https://insprii-app-nextjs-*-aiotexs-projects.vercel.app'], // TODO: check if we ned all values here
+		trustedOrigins: ['expo://', 'http://localhost:3000', 'https://insprii-app-nextjs-*-aiotexs-projects.vercel.app'], // TODO: check if we ned all values here
 		onAPIError: {
 			onError(error, ctx) {
 				console.error('BETTER AUTH API ERROR', error, ctx)
