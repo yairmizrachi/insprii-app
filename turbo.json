@@ -1,5 +1,5 @@
 {
-	"$schema": "https://turborepo.com/schema.json",
+	"$schema": "https://v2-9-16.turborepo.dev/schema.json",
 	"ui": "tui",
 	"tasks": {
 		"topo": {
@@ -45,6 +45,20 @@
 			"interactive": true
 		}
 	},
-	"globalEnv": ["POSTGRES_URL", "GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "AUTH_REDIRECT_PROXY_URL", "AUTH_SECRET", "PORT"],
+	"globalEnv": [
+		"POSTGRES_URL",
+		"GOOGLE_CLIENT_ID",
+		"GOOGLE_CLIENT_SECRET",
+		"AUTH_REDIRECT_PROXY_URL",
+		"AUTH_SECRET",
+		"PORT",
+		"RESEND_API_KEY",
+		"EMAIL_FROM",
+		"EMAIL_FROM_NAME",
+		"EMAIL_REPLY_TO",
+		"EMAIL_SUBJECT",
+		"EMAIL_LOGO_URL",
+		"NEXT_PUBLIC_SITE_NAME"
+	],
 	"globalPassThroughEnv": ["NODE_ENV", "CI", "VERCEL", "VERCEL_ENV", "VERCEL_URL", "npm_lifecycle_event"]
 }

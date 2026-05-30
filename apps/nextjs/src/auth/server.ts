@@ -2,8 +2,10 @@ import 'server-only'
 
 import { cache } from 'react'
 import { headers } from 'next/headers'
-import { initAuth } from '@repo/auth'
 import { nextCookies } from 'better-auth/next-js'
+
+import { initAuth } from '@repo/auth'
+import { sendMagicLinkEmail } from '@repo/email'
 
 import { env } from '~/env'
 
@@ -26,6 +28,12 @@ export const auth = initAuth({
 	secret: env.AUTH_SECRET,
 	googleClientId: env.GOOGLE_CLIENT_ID,
 	googleClientSecret: env.GOOGLE_CLIENT_SECRET,
+	sendMagicLink: ({ email, url }) =>
+		sendMagicLinkEmail({
+			to: email,
+			url,
+			appName: env.NEXT_PUBLIC_SITE_NAME ?? 'Insprii',
+		}),
 	extraPlugins: [nextCookies()],
 })
 

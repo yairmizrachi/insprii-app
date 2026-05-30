@@ -1,6 +1,6 @@
 import { Pressable, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Stack } from 'expo-router'
+import { Link, Stack } from 'expo-router'
 
 import { authClient } from '~/utils/auth'
 
@@ -13,14 +13,23 @@ function MobileAuth() {
 				{session?.user.name ? `Hello, ${session.user.name}` : 'Not logged in'}
 			</Text>
 			<Pressable
-				onPress={() =>
-					session
-						? authClient.signOut()
-						: authClient.signIn.social({
+				onPress={async () => {
+					console.log('Session:', session)
+					try {
+						if (session) {
+							const out = await authClient.signOut()
+							console.log('signOut result:', out)
+						} else {
+							const res = await authClient.signIn.social({
 								provider: 'google',
 								callbackURL: '/',
 							})
-				}
+							console.log('signIn.social result:', res)
+						}
+					} catch (err) {
+						console.error('Auth action failed:', err)
+					}
+				}}
 				className="bg-primary flex items-center rounded-sm p-2"
 			>
 				<Text>{session ? 'Sign Out' : 'Sign In With Google'}</Text>
@@ -36,6 +45,11 @@ export default function Index() {
 			<View className="bg-background h-full w-full p-4">
 				<Text className="text-foreground pb-2 text-center text-5xl font-bold">Your App</Text>
 				<MobileAuth />
+				<Link href="/login" asChild>
+					<Pressable className="border-border mt-4 items-center rounded-sm border p-2">
+						<Text className="text-foreground">Go to Login Page</Text>
+					</Pressable>
+				</Link>
 			</View>
 		</SafeAreaView>
 	)

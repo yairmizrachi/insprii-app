@@ -4,7 +4,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 	...config,
 	name: 'expo',
 	slug: 'insprii',
-	scheme: 'expo',
+	scheme: 'expo', // required for deep linking to work with expo-router and better auth's expo plugin
 	version: '0.1.0',
 	orientation: 'portrait',
 	icon: './assets/icon-light.png',
@@ -31,7 +31,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 	},
 	extra: {
 		eas: {
-			projectId: process.env.EAS_PROJECT_ID,
+			projectId: '2077f102-5567-45d2-8bae-acca2ae52a60',
 		},
 	},
 	experiments: {

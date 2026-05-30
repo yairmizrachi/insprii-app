@@ -1,10 +1,16 @@
 import type { BetterAuthOptions, BetterAuthPlugin } from 'better-auth'
 import { expo } from '@better-auth/expo'
-import { db } from '@repo/db/client'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
-import { createAuthMiddleware } from 'better-auth/api'
-import { oAuthProxy } from 'better-auth/plugins'
+import { magicLink, oAuthProxy } from 'better-auth/plugins'
+
+import { db } from '@repo/db/client'
+
+export interface SendMagicLinkArgs {
+	email: string
+	url: string
+	token: string
+}
 
 export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options: {
 	baseUrl: string
@@ -13,6 +19,8 @@ export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options:
 
 	googleClientId: string
 	googleClientSecret: string
+
+	sendMagicLink: (args: SendMagicLinkArgs) => Promise<void>
 
 	extraPlugins?: TExtraPlugins
 }) {
@@ -27,6 +35,11 @@ export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options:
 				currentURL: options.baseUrl,
 				productionURL: options.productionUrl,
 			}),
+			magicLink({
+				sendMagicLink: async ({ email, token, url }) => {
+					await options.sendMagicLink({ email, token, url })
+				},
+			}),
 			expo(),
 			...(options.extraPlugins ?? []),
 		],
@@ -34,7 +47,6 @@ export function initAuth<TExtraPlugins extends BetterAuthPlugin[] = []>(options:
 			google: {
 				clientId: options.googleClientId,
 				clientSecret: options.googleClientSecret,
-				redirectURI: `${options.productionUrl}/api/auth/callback/google`,
 			},
 		},
 		trustedOrigins: ['expo://', 'http://localhost:3000', 'https://insprii-app-nextjs-*-aiotexs-projects.vercel.app'], // TODO: check if we ned all values here

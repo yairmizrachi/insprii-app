@@ -1,21 +1,10 @@
 {
-	"name": "@repo/db",
+	"name": "@repo/email",
 	"private": true,
 	"type": "module",
 	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"default": "./src/index.ts"
-		},
-		"./client": {
-			"types": "./dist/client.d.ts",
-			"default": "./src/client.ts"
-		},
-		"./env": "./env.ts",
-		"./schema": {
-			"types": "./dist/schema.d.ts",
-			"default": "./src/schema.ts"
-		}
+		".": "./src/index.ts",
+		"./env": "./env.ts"
 	},
 	"license": "MIT",
 	"scripts": {
@@ -24,16 +13,14 @@
 		"dev": "tsc",
 		"format": "prettier --check . --ignore-path ../../.gitignore",
 		"lint": "eslint --flag unstable_native_nodejs_ts_config",
-		"push": "pnpm with-env drizzle-kit push",
-		"studio": "pnpm with-env drizzle-kit studio",
-		"typecheck": "tsc --noEmit --emitDeclarationOnly false",
-		"with-env": "dotenv -e ../../.env --"
+		"typecheck": "tsc --noEmit --emitDeclarationOnly false"
 	},
 	"dependencies": {
+		"@react-email/components": "^0.0.32",
+		"@react-email/render": "^1.0.5",
 		"@t3-oss/env-core": "^0.13.8",
-		"drizzle-orm": "^0.45.2",
-		"drizzle-zod": "^0.8.3",
-		"postgres": "^3.4.9",
+		"react": "catalog:react19",
+		"resend": "^6.12.4",
 		"zod": "catalog:"
 	},
 	"devDependencies": {
@@ -41,7 +28,7 @@
 		"@repo/prettier-config": "workspace:*",
 		"@repo/tsconfig": "workspace:*",
 		"@types/node": "catalog:",
-		"drizzle-kit": "^0.31.5",
+		"@types/react": "catalog:react19",
 		"eslint": "catalog:",
 		"prettier": "catalog:",
 		"typescript": "catalog:"

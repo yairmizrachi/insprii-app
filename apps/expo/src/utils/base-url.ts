@@ -16,10 +16,13 @@ export const getBaseUrl = () => {
 	const debuggerHost = Constants.expoConfig?.hostUri
 	const localhost = debuggerHost?.split(':')[0]
 
+	console.log(`http://${localhost}:3000`)
+
 	if (!localhost) {
 		// In production, return your deployed server URL instead of throwing, e.g.
 		// return "https://example.com";
 		throw new Error('Failed to get localhost. Please point to your production server.')
 	}
+
 	return `http://${localhost}:3000`
 }
