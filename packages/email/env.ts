@@ -5,7 +5,7 @@ export function emailEnv() {
 	return createEnv({
 		server: {
 			RESEND_API_KEY: z.string().min(1),
-			EMAIL_FROM: z.email().optional(),
+			RESEND_EMAIL_FROM: z.email().optional(),
 		},
 		runtimeEnv: process.env,
 		skipValidation: !!process.env.CI || process.env.npm_lifecycle_event === 'lint',

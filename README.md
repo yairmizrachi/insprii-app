@@ -16,7 +16,7 @@ See [`AGENTS.md`](./AGENTS.md) for project conventions when working with AI agen
 
 ```bash
 pnpm install
-cp .env.example .env       # fill in POSTGRES_URL + AUTH_SECRET at minimum
+cp .env.example .env       # fill in POSTGRES_URL + BETTER_AUTH_SECRET at minimum
 pnpm db:push               # apply Drizzle schema (creates `waitlist` + auth tables)
 pnpm auth:generate         # regenerate packages/db/src/auth-schema.ts from Better Auth config
 pnpm dev:next              # next dev on http://localhost:3000
@@ -45,7 +45,7 @@ Everything below is what you swap to take this from a generic template to your b
 | BIMI logo (email)                   | `pnpm -F @repo/nextjs generate:bimi <source.svg> "<Brand>"`                                           | Wraps your SVG in a BIMI-compliant root. You still need a VMC and a DNS TXT record (script prints the instructions).                                                   |
 | Welcome email copy                  | `packages/api/src/emails/welcome.tsx`                                                                 | All visible copy is env-driven (`NEXT_PUBLIC_SITE_NAME`, `EMAIL_REPLY_TO`); only edit the file for layout/style changes.                                               |
 | Email logo                          | `.env`: `EMAIL_LOGO_URL`                                                                              | Hosted absolute URL (e.g. `https://yourdomain.com/logo.png`).                                                                                                          |
-| Resend (transactional email)        | `.env`: `RESEND_API_KEY`, `EMAIL_FROM`, `EMAIL_FROM_NAME`, `EMAIL_REPLY_TO`, `EMAIL_SUBJECT`          | Leave `RESEND_API_KEY` blank to skip email sending. Verify your sending domain in [Resend](https://resend.com).                                                        |
+| Resend (transactional email)        | `.env`: `RESEND_API_KEY`, `RESEND_EMAIL_FROM`          | Leave `RESEND_API_KEY` blank to skip email sending. Verify your sending domain in [Resend](https://resend.com).                                                        |
 | Google OAuth                        | `.env`: `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`                                                    | Console → Credentials. Add `https://yourdomain.com/api/auth/callback/google` (prod) and `http://localhost:3000/api/auth/callback/google` (dev) as authorized URIs.     |
 | OAuth proxy production URL         | `apps/nextjs/src/auth/server.ts`                                                                      | `productionUrl` passed to `initAuth`. Must match your deployed Vercel domain so the Expo app can OAuth in dev.                                                         |
 | Trusted origins (expo deep links)   | `packages/auth/src/index.ts`                                                                          | `trustedOrigins: ['yourapp://']` → use your real expo `scheme` from `app.config.ts`.                                                                                   |
@@ -61,7 +61,7 @@ After a customize pass, run `pnpm typecheck` to catch any breakage from renames.
 ### Web (Vercel)
 
 1. New project → root directory `apps/nextjs`.
-2. Add env vars from `.env.example` (at minimum `POSTGRES_URL`, `AUTH_SECRET`, `GOOGLE_CLIENT_*`).
+2. Add env vars from `.env.example` (at minimum `POSTGRES_URL`, `BETTER_AUTH_SECRET`, `GOOGLE_CLIENT_*`).
 3. Assign your domain.
 
 ### Auth proxy
